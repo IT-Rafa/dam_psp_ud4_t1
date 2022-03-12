@@ -40,31 +40,31 @@ public class TicketsServer extends Thread {
     public void run() {
 
         // Server creation indicating port (try-with-resources)
-        try (ServerSocket connTCP = new ServerSocket(PORT)) {
+        ServerSocket connTCP = null;
+        try {
+            connTCP = new ServerSocket(PORT);
+            String clientId = "None";
+
             Logger.getLogger(TicketsServer.class.getName()).log(
                     Level.INFO, String.format(
                             "SERVER: Waiting a client request in port %d", PORT));
 
             // When happens, store the new connnection, by a new port,
             // to exchage of data with client
-            Socket connCli = connTCP.accept();
+            while (true) {
+                Socket connCli = connTCP.accept();
+                clientId = connCli.getRemoteSocketAddress().toString();
+                // A client request is received 
+                Logger.getLogger(TicketsServer.class.getName()).log(
+                        Level.INFO, String.format(
+                                "SERVER: Client %s request received", clientId));
 
-            // A client request is received 
-            Logger.getLogger(TicketsServer.class.getName()).log(
-                    Level.INFO, String.format(
-                            "SERVER: Client request received from ip %s ",
-                            connCli.getRemoteSocketAddress().toString()));
-
-            // Manage client request
-            manageClientData(connCli);
+                // Manage client request
+                manageClientData(connCli, clientId);
+                connCli.close();
+            }
 
             // Closing
-            Logger.getLogger(TicketsServer.class.getName()).log(
-                    Level.INFO, "SERVER: Closing Server");
-            // Close client data connection
-            connCli.close();
-            // connTCP ya cerrado
-
             // socketExceptions
         } catch (BindException ex) {
             Logger.getLogger(TicketsServer.class.getName()).
@@ -93,7 +93,7 @@ public class TicketsServer extends Thread {
      * @param connCli Connection to exchange data with client
      * @throws IOException
      */
-    private static void manageClientData(Socket connCli) throws IOException {
+    private static void manageClientData(Socket connCli, String clientId) throws IOException {
 
         try (ObjectInputStream inputObject
                 = new ObjectInputStream(connCli.getInputStream());
@@ -104,7 +104,8 @@ public class TicketsServer extends Thread {
             TicketAsk dato = (TicketAsk) inputObject.readObject();
             Logger.getLogger(TicketsServer.class.getName()).log(
                     Level.INFO, String.format(
-                            "SERVER: Ticket request from client received:\n** %s",
+                            "SERVER: Ticket request from client %s is ok:\n** %s",
+                            clientId,
                             dato.toString()));
 
             // Prepare Ticket
@@ -114,7 +115,8 @@ public class TicketsServer extends Thread {
             outObject.writeObject(ticketToSend);
             Logger.getLogger(TicketsServer.class.getName()).log(
                     Level.INFO, String.format(
-                            "SERVER: Ticket created and sent: \n** %s",
+                            "SERVER: Ticket to client %s created and sent: \n** %s",
+                            clientId,
                             ticketToSend.toString()));
 
         } catch (ClassNotFoundException ex) {
