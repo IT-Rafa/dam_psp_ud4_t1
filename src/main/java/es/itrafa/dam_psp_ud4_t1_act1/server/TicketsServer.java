@@ -60,7 +60,7 @@ public class TicketsServer extends Thread {
                                 "SERVER: Client %s request received", clientId));
 
                 // Manage client request
-                manageClientData(connCli, clientId);
+                new ManageDataClient(connCli, clientId).start();
                 connCli.close();
             }
 
