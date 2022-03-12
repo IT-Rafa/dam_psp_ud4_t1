@@ -5,7 +5,7 @@
  * Modifica el ejercicio 1 de la unidad 3 para que el servidor permita trabajar 
  * de forma concurrente con varios clientes que le soliciten tickets.
  * 
- * <h3>Enunciado PSP03 - Actividad 3.1</h3>
+ * <h3>Referencia: Enunciado PSP03 - Actividad 3.1</h3>
  * El objetivo del ejercicio es crear una aplicación cliente/servidor que se comunique 
  * por el puerto 2000 y realice lo siguiente:
  * <ul>
