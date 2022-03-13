@@ -18,18 +18,18 @@ import java.util.logging.Logger;
  * @author it-ra
  */
 public class ManageDataClient extends Thread {
+
     private Socket connCli;
     private String clientId;
-    
-    public ManageDataClient(Socket connCli, String clientId){
+
+    public ManageDataClient(Socket connCli, String clientId) {
         this.connCli = connCli;
         this.clientId = clientId;
     }
-    
-    
+
     @Override
-    public void run(){
-         try (ObjectInputStream inputObject
+    public void run() {
+        try (ObjectInputStream inputObject
                 = new ObjectInputStream(connCli.getInputStream());
                 ObjectOutputStream outObject
                 = new ObjectOutputStream(connCli.getOutputStream())) {
@@ -53,6 +53,8 @@ public class ManageDataClient extends Thread {
                             clientId,
                             ticketToSend.toString()));
 
+            connCli.close();
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TicketsServer.class.getName())
                     .log(Level.SEVERE, null, ex);

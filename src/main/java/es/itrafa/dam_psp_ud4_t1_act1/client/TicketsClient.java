@@ -9,7 +9,6 @@ import java.net.ConnectException;
 import java.net.NoRouteToHostException;
 import java.net.PortUnreachableException;
 import java.net.Socket;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,14 +33,23 @@ public class TicketsClient extends Thread {
      * Server IP
      */
     final private String SERVERHOST = "localhost";
+    /**
+     * petición de ticket que hará el cliente
+     */
+    final private TicketAsk askTicket;
 
-    // MAIN METHOD
+    // CONSTRUCTORS
+    public TicketsClient(TicketAsk askTicket) {
+        this.askTicket = askTicket;
+    }
+
+    //  METHODS
     /**
      * It tries to connect to the server and, if successful, exchanges data.
      */
     @Override
     public void run() {
-        Socket ssocket = null;
+        Socket ssocket;
         String clientId = "None";
         Ticket ticketReceived;
         try {
@@ -56,7 +64,7 @@ public class TicketsClient extends Thread {
             );
 
             // Manage data exchange. Sshould produce a Ticket object
-            ticketReceived = makeRequest(ssocket, clientId);
+            ticketReceived = makeRequest(ssocket, askTicket, clientId);
 
             if (ticketReceived != null) {
                 // Ticket recibido
@@ -66,7 +74,7 @@ public class TicketsClient extends Thread {
                                 clientId, ticketReceived.toString()
                         )
                 );
-
+                ssocket.close();
             } else {
                 // Failed data exchange
                 Logger.getLogger(TicketsClient.class.getName()).log(
@@ -74,16 +82,15 @@ public class TicketsClient extends Thread {
                                 "CLIENT %s: Ticket not received", clientId
                         ));
 
-
             }
-                            Logger.getLogger(TicketsClient.class.getName()).log(
-                        Level.INFO, String.format(
-                                "CLIENT %s: End communication with server %s:%d",
-                                clientId,
-                                ssocket.getInetAddress(),
-                                ssocket.getPort()
-                        )
-                );
+            Logger.getLogger(TicketsClient.class.getName()).log(
+                    Level.INFO, String.format(
+                            "CLIENT %s: End communication with server %s:%d",
+                            clientId,
+                            ssocket.getInetAddress(),
+                            ssocket.getPort()
+                    )
+            );
 
             // socketExceptions
         } catch (BindException ex) {
@@ -146,16 +153,9 @@ public class TicketsClient extends Thread {
      *
      * @throws IOException
      */
-    private static Ticket makeRequest(Socket ServerConn, String clientId) throws IOException {
+    private static Ticket makeRequest(Socket ServerConn, TicketAsk askTicket, String clientId) throws IOException {
         // Var to capture Ticket object
         Ticket ticketReceived = null;
-
-        // Creamos petición mediante objeto TicketAsk
-        TicketAsk askTicket = new TicketAsk(
-                "Rafa",
-                LocalDate.now(),
-                TicketType.PENSIONISTAS,
-                3);
 
         // Prepare input and output streams (try-with resources)
         try (
@@ -184,16 +184,4 @@ public class TicketsClient extends Thread {
         return ticketReceived;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Logger.getLogger(TicketsClient.class
-                .getName()).
-                log(Level.INFO, "INICIO CLIENTES");
-        new TicketsClient().start();
-        new TicketsClient().start();
-        new TicketsClient().start();
-        new TicketsClient().start();
-    }
 }

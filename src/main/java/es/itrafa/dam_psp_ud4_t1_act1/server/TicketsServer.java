@@ -32,26 +32,51 @@ public class TicketsServer extends Thread {
      */
     final private int PORT = 2000;
 
-    // MAIN METHOD
     /**
-     * Wait for cient connection, if it is successful, exchanges data.
+     * limited mode only accept a limited cant of clients (cantClients)
+     *
      */
-    @Override
+    private final boolean serverLimited;
+
+    /**
+     * Cant of clients connections allowed in limited mode
+     *
+     */
+    private int cantClients;
+
+    /**
+     * Start server, wait for cient connection and process data exchange
+     */
+    public TicketsServer() {
+        this.serverLimited = false;
+        this.cantClients = 0;
+    }
+
+    public TicketsServer(int cantClients) {
+        this.serverLimited = true;
+        this.cantClients = cantClients;
+    }
+
     public void run() {
 
         // Server creation indicating port (try-with-resources)
-        ServerSocket connTCP = null;
+        ServerSocket connTCP;
         try {
             connTCP = new ServerSocket(PORT);
-            String clientId = "None";
-
+            String clientId;
             Logger.getLogger(TicketsServer.class.getName()).log(
                     Level.INFO, String.format(
                             "SERVER: Waiting a client request in port %d", PORT));
 
+            if (serverLimited) {
+                Logger.getLogger(TicketsServer.class.getName()).log(
+                        Level.WARNING, String.format(
+                                "SERVER: Only accept %d clients (limited mode)", cantClients));
+            }
             // When happens, store the new connnection, by a new port,
             // to exchage of data with client
-            while (true) {
+
+            while (!serverLimited || (cantClients-- > 0)) {
                 Socket connCli = connTCP.accept();
                 clientId = connCli.getRemoteSocketAddress().toString();
                 // A client request is received 
@@ -61,10 +86,14 @@ public class TicketsServer extends Thread {
 
                 // Manage client request
                 new ManageDataClient(connCli, clientId).start();
-                connCli.close();
+
             }
 
             // Closing
+            Thread.sleep(300);
+            Logger.getLogger(TicketsServer.class.getName()).log(
+                    Level.INFO, "SERVER: Closing Server (limited mode)");
+            connTCP.close();
             // socketExceptions
         } catch (BindException ex) {
             Logger.getLogger(TicketsServer.class.getName()).
@@ -83,6 +112,8 @@ public class TicketsServer extends Thread {
             // Handles both the main() and makeRequest() methods
             Logger.getLogger(TicketsServer.class.getName()).
                     log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TicketsServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -125,13 +156,4 @@ public class TicketsServer extends Thread {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Logger.getLogger(TicketsServer.class
-                .getName()).
-                log(Level.INFO, "INICIO SERVIDOR");
-        new TicketsServer().start();
-    }
 }
