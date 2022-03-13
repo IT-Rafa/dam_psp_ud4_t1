@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class ManageDataClient extends Thread {
 
-    private Socket connCli;
-    private String clientId;
+    private final Socket connCli;
+    private final String clientId;
 
     public ManageDataClient(Socket connCli, String clientId) {
         this.connCli = connCli;
@@ -29,10 +29,12 @@ public class ManageDataClient extends Thread {
 
     @Override
     public void run() {
+
+        // try-with-resources (close streams and socket)
         try (ObjectInputStream inputObject
                 = new ObjectInputStream(connCli.getInputStream());
                 ObjectOutputStream outObject
-                = new ObjectOutputStream(connCli.getOutputStream())) {
+                = new ObjectOutputStream(connCli.getOutputStream()); connCli) {
 
             // Get data of client request
             TicketAsk dato = (TicketAsk) inputObject.readObject();
@@ -53,8 +55,7 @@ public class ManageDataClient extends Thread {
                             clientId,
                             ticketToSend.toString()));
 
-            connCli.close();
-            
+            // end try-with-resources (close streams and socket)
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TicketsServer.class.getName())
                     .log(Level.SEVERE, null, ex);
