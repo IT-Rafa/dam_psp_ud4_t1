@@ -53,6 +53,11 @@ public class Jugador implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: Jugador %d con %d PS", posicion, id , ps);
+    }
    
    
     
