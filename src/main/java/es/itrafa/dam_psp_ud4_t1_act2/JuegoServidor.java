@@ -8,6 +8,8 @@ package es.itrafa.dam_psp_ud4_t1_act2;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.RemoteServer;
+import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,9 +51,18 @@ public class JuegoServidor extends Thread implements JuegoInterface {
     @Override
     public Jugador asignacionJugador() throws RemoteException {
         Jugador j = null;
+        String ipCli = null;
+
+        try {
+            ipCli = RemoteServer.getClientHost();
+        } catch (ServerNotActiveException ex) {
+            Logger.getLogger(JuegoServidor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         if (jugadorLibre < CANTJUGADORES) {
             j = listaJugadores.get(jugadorLibre);
             j.setAsignado(true);
+            j.setClienteAsignado(ipCli);
             jugadorLibre++;
 
             Logger.getLogger(JuegoServidor.class.getName()).log(
@@ -73,7 +84,7 @@ public class JuegoServidor extends Thread implements JuegoInterface {
         Logger.getLogger(JuegoServidor.class.getName()).log(
                 Level.INFO, String.format(
                         "SERVER: Jugador %d Consulta Ranking ", 0));
-        return listaJugadores;
+        return Collections.unmodifiableList(listaJugadores);
     }
 
     @Override
@@ -85,24 +96,33 @@ public class JuegoServidor extends Thread implements JuegoInterface {
     }
 
     @Override
-    public void ataque(int jugadorAtacado) throws RemoteException {
+    public void ataque(int idJugadorAtacante, int idJugadorAtacado) throws RemoteException {
+        Jugador agresor = findJugadorById(idJugadorAtacante);
+        Jugador agredido = findJugadorById(idJugadorAtacado);
+
+        agresor = listaJugadores.get(0);
         Logger.getLogger(JuegoServidor.class.getName()).log(
                 Level.INFO, String.format(
-                        "SERVER: Jugador Ataca a Jugador %d", jugadorAtacado));
+                        "SERVER: Jugador Ataca a Jugador %d", idJugadorAtacado));
 
-        // reordena rankin tras ataque
-        ordenarRankin();
+        if (agresor != null || agredido != null) {
+            var ataque = agresor.getPc() * new Random().nextInt(1) / 5;
+            agredido.setPs(agredido.getPs() - ataque);
+            ordenarRankin();
+        }
+
     }
 
     @Override
     public void run() {
         try {
             //
+
             rgsty = LocateRegistry.createRegistry(PORT);
             JuegoServidor gameServer = new JuegoServidor();
             //
             rgsty.rebind("GameServer", UnicastRemoteObject.exportObject(gameServer, PORT));
-            //
+
             Logger.getLogger(JuegoServidor.class.getName()).log(
                     Level.INFO, String.format(
                             "SERVER: Listening in port %d", PORT));
@@ -132,6 +152,10 @@ public class JuegoServidor extends Thread implements JuegoInterface {
             listaJugadores.get(i - 1).setPosicion(i);
         }
 
+    }
+
+    private Jugador findJugadorById(int idJugadorAtacado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

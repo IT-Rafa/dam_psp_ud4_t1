@@ -21,10 +21,9 @@ import java.util.logging.Logger;
 public class JuegoCliente extends Thread {
 
     private static final int PORT = JuegoServidor.PORT;
-
     private JuegoInterface partida;
     private Jugador jugador;
-    private int idCli;
+    private final int idCli;
 
     JuegoCliente(int idCli) {
         this.idCli = idCli;
@@ -34,6 +33,7 @@ public class JuegoCliente extends Thread {
     public void run() {
         try {
             init();
+            fight();
 
         } catch (MalformedURLException | RemoteException | NotBoundException ex) {
             Logger.getLogger(JuegoCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,7 +50,7 @@ public class JuegoCliente extends Thread {
     private void init() throws
             MalformedURLException, RemoteException, NotBoundException {
         //
-        Registry registry = LocateRegistry.getRegistry("localhost", PORT);
+       Registry registry = LocateRegistry.getRegistry("localhost", PORT);
 
         //Obteniendo los metodos remotos --> polimorfismo con interfaces
         partida = (JuegoInterface) registry.lookup("GameServer"); //Buscar en el registro...
@@ -68,16 +68,30 @@ public class JuegoCliente extends Thread {
                     Level.INFO, String.format(
                             "CLIENTE_%d: pidió Ranking jugadores: %s", idCli, lista.toString()));
 
-            // cada 3 ataques preguntamos rankin para definir primero
-            
-            // Si somos el primero  Atacamos al segundo hasta que muera
-            // si no, Atacamos al primero hasta que muera
-            
         } else {
             Logger.getLogger(JuegoCliente.class.getName()).log(
                     Level.WARNING, String.format(
                             "CLIENTE_%d:: Servidor no pudo asignar jugador. Posible partida completa", idCli));
         }
 
+    }
+
+    private void fight() {
+        try {
+            // atacamos 1 vez al jugador de la derecha (siguiente en la lista)
+            // (Entendemos el mas a la izquierda el 1 y el mas a la derecha el 5.
+            //  Al llegar a 5, ataca al 1.)
+            // Si vivo. repetimos ataque
+            // Si muerto, vamos al proximo a su derecha que esté vivo
+            
+            // Atacamos al siguiente: j1 a j2, j2->j3,... j5->j1
+            
+            
+            partida.ataque(jugador.getId(), jugador.getId() +1);
+            
+            
+        } catch (RemoteException ex) {
+            Logger.getLogger(JuegoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

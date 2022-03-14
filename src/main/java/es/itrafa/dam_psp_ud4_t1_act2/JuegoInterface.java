@@ -12,5 +12,5 @@ public interface JuegoInterface extends Remote {
     Jugador asignacionJugador()throws RemoteException;
     List <Jugador> consultaRanking()throws RemoteException;
     Jugador consultaPS(int id)throws RemoteException;
-    void ataque (int jugadorAtacado)throws RemoteException;
+    void ataque (int jugadorAtacante, int jugadorAtacado)throws RemoteException;
 }

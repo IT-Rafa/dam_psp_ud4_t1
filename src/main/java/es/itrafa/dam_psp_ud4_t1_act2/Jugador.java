@@ -9,6 +9,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Jugador implements Serializable{
    private int id; // identificador del jugador
+   private String clienteAsignado; 
    private int ps; //puntos de salud
    private int pc; //puntos de combate
    private int posicion; //ranking
@@ -57,6 +58,20 @@ public class Jugador implements Serializable{
     @Override
     public String toString() {
         return String.format("%s: Jugador %d con %d PS", posicion, id , ps);
+    }
+
+    /**
+     * @return the clienteAsignado
+     */
+    public String getClienteAsignado() {
+        return clienteAsignado;
+    }
+
+    /**
+     * @param clienteAsignado the clienteAsignado to set
+     */
+    public void setClienteAsignado(String clienteAsignado) {
+        this.clienteAsignado = clienteAsignado;
     }
    
    
