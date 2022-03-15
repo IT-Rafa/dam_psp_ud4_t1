@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Juan Morillo Fernandez
  */
-public class JuegoServidor extends Thread implements JuegoInterface {
+public class JuegoServidor implements JuegoInterface {
 
     private Registry rgsty;
     protected static final int PORT = 2000;
@@ -83,37 +83,70 @@ public class JuegoServidor extends Thread implements JuegoInterface {
     public List<Jugador> consultaRanking() throws RemoteException {
         Logger.getLogger(JuegoServidor.class.getName()).log(
                 Level.INFO, String.format(
-                        "SERVER: Jugador %d Consulta Ranking ", 0));
+                        "SERVER: Jugador Consulta Ranking "));
         return Collections.unmodifiableList(listaJugadores);
     }
 
     @Override
     public Jugador consultaPS(int id) throws RemoteException {
+        Jugador j = findJugadorById(id);
         Logger.getLogger(JuegoServidor.class.getName()).log(
                 Level.INFO, String.format(
-                        "SERVER: Jugador %d Consulta PS ", 0));
+                        "SERVER: Jugador %d Consulta sus PS ", j.getId()));
         return null;
     }
 
     @Override
     public void ataque(int idJugadorAtacante, int idJugadorAtacado) throws RemoteException {
-        Jugador agresor = findJugadorById(idJugadorAtacante);
-        Jugador agredido = findJugadorById(idJugadorAtacado);
+        if (listaJugadores.size() == CANTJUGADORES) {
+            Jugador agresor = findJugadorById(idJugadorAtacante);
+            Jugador agredido = findJugadorById(idJugadorAtacado);
 
-        agresor = listaJugadores.get(0);
-        Logger.getLogger(JuegoServidor.class.getName()).log(
-                Level.INFO, String.format(
-                        "SERVER: Jugador Ataca a Jugador %d", idJugadorAtacado));
+            if (agresor.equals(agredido)) {
+                // Pegarse a si mismo e estupido
+                Logger.getLogger(JuegoServidor.class.getName()).log(
+                        Level.INFO, String.format(
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Por su propio bien",
+                                idJugadorAtacante, idJugadorAtacado));
+                
+            }else if (agresor.getPs() <= 0) {
+                // agresor ya murio y no puede atacar
+                Logger.getLogger(JuegoServidor.class.getName()).log(
+                        Level.INFO, String.format(
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; el agresor ya está muerto",
+                                idJugadorAtacante, idJugadorAtacado));
+                
+            } else if (agredido.getPs() <= 0) {
+                // agredido ya murio y no puede ser atacado
+                Logger.getLogger(JuegoServidor.class.getName()).log(
+                        Level.INFO, String.format(
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; el agredido ya está muerto",
+                                idJugadorAtacante, idJugadorAtacado));
+                
+            } else {
+                int ataque = agresor.getPc()
+                        * (1 - new Random().nextInt(2) * new Random().nextInt(2))
+                        / 5;
+                agredido.setPs(agredido.getPs() - ataque);
+                Logger.getLogger(JuegoServidor.class.getName()).log(
+                        Level.INFO, String.format(
+                                "SERVER: Ataque exitoso jugador %d al jugador %d con %d puntos ataque",
+                                idJugadorAtacante, idJugadorAtacado, ataque)
+                );
+                
+                ordenarRankin();
+            }
 
-        if (agresor != null || agredido != null) {
-            var ataque = agresor.getPc() * new Random().nextInt(1) / 5;
-            agredido.setPs(agredido.getPs() - ataque);
-            ordenarRankin();
+        } else {
+            Logger.getLogger(JuegoServidor.class.getName()).log(
+                    Level.WARNING, String.format(
+                            "SERVER: Intento ataque jugador %d antes de completar jugadores",
+                            idJugadorAtacante));
         }
 
     }
 
-    @Override
+
     public void run() {
         try {
             //
@@ -154,8 +187,14 @@ public class JuegoServidor extends Thread implements JuegoInterface {
 
     }
 
-    private Jugador findJugadorById(int idJugadorAtacado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Jugador findJugadorById(int idJugador) {
+        for (int i = 0; i < listaJugadores.size(); i++) {
+            if (listaJugadores.get(i).getId() == idJugador) {
+                return listaJugadores.get(i);
+            }
+        }
+
+        return null;
     }
 
 }

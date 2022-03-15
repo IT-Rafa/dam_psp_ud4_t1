@@ -9,7 +9,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Jugador implements Serializable{
    private int id; // identificador del jugador
-   private String clienteAsignado; 
+   private String clienteAsignado; // alamacena IP jugador
    private int ps; //puntos de salud
    private int pc; //puntos de combate
    private int posicion; //ranking
