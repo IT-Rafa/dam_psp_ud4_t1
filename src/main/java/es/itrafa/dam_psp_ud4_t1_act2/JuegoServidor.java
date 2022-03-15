@@ -97,43 +97,57 @@ public class JuegoServidor implements JuegoInterface {
     }
 
     @Override
-    public void ataque(int idJugadorAtacante, int idJugadorAtacado) throws RemoteException {
-        if (listaJugadores.size() == CANTJUGADORES) {
-            Jugador agresor = findJugadorById(idJugadorAtacante);
-            Jugador agredido = findJugadorById(idJugadorAtacado);
+    public void ataque(int idsAtacanteAtacado) throws RemoteException {
+        // SOLUCIÓN IMPROVISADA INTERFAZ REMOTA
+        // AL ATACAR, SERVIDOR NO CONOCE QUIEN INICIA EL ATAQUE
+        // Válido mientras cant jugadores sea 1-9
+        // parámetro jugadorAtacado: void ataque (int jugadorAtacado) es
+        // convertida en idsAtacanteAtacado (decenas=atacante, unidades=atacado)
+        // Ejemplo: jugador 3 ataca a jugador 2
+        // idsAtacanteAtacado = idAtacante*10 + idAtacado 3 *10 +2 = 32
 
+        // Reconvertimos en id
+        // 32 / 10 = 3;
+        int idJugadorAtacante = idsAtacanteAtacado / 10;
+        // 32 - 3*10= 2
+        int idJugadorAtacado = idsAtacanteAtacado - idJugadorAtacante * 10;
+        Jugador agresor = findJugadorById(idJugadorAtacante);
+        Jugador agredido = findJugadorById(idJugadorAtacado);
+
+        // Controlamos ataque
+        if (listaJugadores.size() == CANTJUGADORES) {
             if (agresor.equals(agredido)) {
                 // Pegarse a si mismo e estupido
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
                                 "SERVER: Intento ataque jugador %d al jugador %d nulo; Por su propio bien",
                                 idJugadorAtacante, idJugadorAtacado));
-                
-            }else if (agresor.getPs() <= 0) {
+
+            } else if (agresor.getPs() <= 0) {
                 // agresor ya murio y no puede atacar
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
                                 "SERVER: Intento ataque jugador %d al jugador %d nulo; el agresor ya está muerto",
                                 idJugadorAtacante, idJugadorAtacado));
-                
+
             } else if (agredido.getPs() <= 0) {
                 // agredido ya murio y no puede ser atacado
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
                                 "SERVER: Intento ataque jugador %d al jugador %d nulo; el agredido ya está muerto",
                                 idJugadorAtacante, idJugadorAtacado));
-                
+
             } else {
+                int oldPS = agredido.getPs();
                 int ataque = agresor.getPc()
                         * (1 - new Random().nextInt(2) * new Random().nextInt(2))
                         / 5;
                 agredido.setPs(agredido.getPs() - ataque);
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
-                                "SERVER: Ataque exitoso jugador %d al jugador %d con %d puntos ataque",
-                                idJugadorAtacante, idJugadorAtacado, ataque)
-                );
-                
+                                "SERVER: Ataque exitoso del jugador %d al jugador %d  con %d puntos: J%d PS = %d -%d = %d",
+                                idJugadorAtacante, idJugadorAtacado, ataque,idJugadorAtacado, oldPS, ataque, agredido.getPs()));
+
                 ordenarRankin();
             }
 
@@ -145,7 +159,6 @@ public class JuegoServidor implements JuegoInterface {
         }
 
     }
-
 
     public void run() {
         try {
@@ -181,7 +194,8 @@ public class JuegoServidor implements JuegoInterface {
     private void ordenarRankin() {
         Collections.sort(listaJugadores, (Jugador j1, Jugador j2)
                 -> Integer.valueOf(j2.getPs()).compareTo(j1.getPs()));
-        for (int i = 1; i < listaJugadores.size(); i++) {
+
+        for (int i = 1; i < listaJugadores.size() + 1; i++) {
             listaJugadores.get(i - 1).setPosicion(i);
         }
 

@@ -88,8 +88,9 @@ public class JuegoCliente {
 
         Logger.getLogger(JuegoCliente.class.getName()).log(
                 Level.INFO, String.format(
-                        "CLIENTE_%d: Intento de ataque, como jugador %d, a jugador %d;", idCli, jugador.getId(), jAtacado));
-        partida.ataque(jugador.getId(), jAtacado);
+                        "CLIENTE_%d: Intento de ataque, como jugador %d, al jugador %d;", idCli, jugador.getId(), jAtacado));
+        
+        partida.ataque(jugador.getId()*10 + jAtacado);
     }
 
 }
