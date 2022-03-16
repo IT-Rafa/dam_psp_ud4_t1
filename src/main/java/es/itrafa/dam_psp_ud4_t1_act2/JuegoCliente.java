@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 public class JuegoCliente {
 
     private static final Logger LOG = Logger.getLogger(JuegoCliente.class.getName());
-
-    private static final int PORT = JuegoServidor.PORT;
+    private static final int CANTJUGADORES = 5;
+    private static final int PORT = 2000;
     private JuegoInterface partida;
     private Jugador jugador;
     private final int idCli;
@@ -71,25 +71,28 @@ public class JuegoCliente {
             } else {
                 LOG.warning(String.format("CLIENTE_%d: Asignación rechazada. %s",
                         idCli, "Posible partida completa"));
-
             }
         } catch (NotBoundException ex) {
             LOG.severe(String.format("CLIENTE_%d: Error al buscar objeto remoto",
                     idCli));
-
         }
 
     }
 
-    public void callRanking() throws RemoteException {
+    public int[] callRanking() throws RemoteException {
         List<Jugador> ranking = partida.consultaRanking();
         LOG.info(String.format("CLIENTE_%d: Recibido Ranking; %s", idCli, ranking));
-
+        int [] rankingIdArray = new int[CANTJUGADORES];
+        int i=0;
+        for(Jugador j:ranking){
+            rankingIdArray[i] = j.getId();
+            i++;
+        }
+        return rankingIdArray;
     }
 
     void callConsultaPS() throws RemoteException {
         setJugador(partida.consultaPS(jugador.getId()));
-        
         LOG.info(String.format(
                         "CLIENTE_%d: Como jugador %d: Tiene %s PS y %d PC",
                         idCli, jugador.getId(), jugador.getPs(), jugador.getPc()));

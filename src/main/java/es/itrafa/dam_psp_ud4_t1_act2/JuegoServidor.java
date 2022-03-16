@@ -29,14 +29,15 @@ public class JuegoServidor implements JuegoInterface {
     static final Logger LOG = Logger.getLogger(JuegoServidor.class.getName());
 
     private Registry rgsty;
-    protected static final int PORT = 2000;
-    protected static final int CANTJUGADORES = 5;
-    private final List<Jugador> listaJugadores;
+    private static final int PORT = 2000;
+    private static int CANTJUGADORES;
     private static int jugadorLibre = 0;
+    private final List<Jugador> listaJugadores;
 
     // CONSTRUCTOR
-    public JuegoServidor() {
+    public JuegoServidor(int cantJugadores) {
         configLog();
+        CANTJUGADORES = 5;
         listaJugadores = new ArrayList<>();
 
         for (int i = 1; i <= CANTJUGADORES; i++) {
@@ -61,7 +62,7 @@ public class JuegoServidor implements JuegoInterface {
         try {
             ipCli = RemoteServer.getClientHost();
         } catch (ServerNotActiveException ex) {
-            LOG.severe(ex.getMessage());
+            LOG.severe("Error al intentar capturar la ip del cliente.");
 
         }
 
@@ -71,12 +72,11 @@ public class JuegoServidor implements JuegoInterface {
             j.setIp(ipCli);
             jugadorLibre++;
 
-            LOG.info(String.format("SERVER: Asignado el jugador %d al cliente con IP:%s",
+            LOG.info(String.format("Asignado el jugador %d al cliente con IP:%s",
                     j.getId(), j.getIp()));
 
         } else {
-            LOG.warning(String.format("SERVER: %s; %s",
-                    "Intento de asignación de jugador no válido",
+            LOG.warning(String.format("Intento de asignación de jugador no válido; %s",
                     "Todos los jugadores de la partida fueron asignados"));
 
         }
@@ -86,8 +86,7 @@ public class JuegoServidor implements JuegoInterface {
 
     @Override
     public List<Jugador> consultaRanking() throws RemoteException {
-        LOG.info(String.format(
-                "SERVER: Cliente Consulta Ranking "));
+        LOG.info(String.format("Cliente Consulta Ranking "));
 
         return Collections.unmodifiableList(listaJugadores);
     }
@@ -96,7 +95,7 @@ public class JuegoServidor implements JuegoInterface {
     public Jugador consultaPS(int id) throws RemoteException {
         Jugador j = findJugadorById(id);
 
-        LOG.info(String.format("SERVER: Cliente con jugador %d Consulta sus PS ",
+        LOG.info(String.format("Cliente Consulta datos jugador %d",
                 j.getId()));
         return j;
     }
@@ -123,24 +122,24 @@ public class JuegoServidor implements JuegoInterface {
         if (listaJugadores.size() == CANTJUGADORES) {
             if (agresor.equals(agredido)) {
                 // Pegarse a si mismo e estupido
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque a si mismo",
-                                idJugadorAtacante, idJugadorAtacado));
+                LOG.warning(String.format("%s %d %s %d %s",
+                        "Intento ataque jugador", idJugadorAtacante,
+                        "al jugador", idJugadorAtacado,
+                        "nulo; Ataque a si mismo"));
 
             } else if (agresor.getPs() <= 0) {
                 // agresor ya murio y no puede atacar
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque de jugador ya eliminado",
-                                idJugadorAtacante, idJugadorAtacado));
+                LOG.warning(String.format("%s %d %s %d %s",
+                        "Intento ataque jugador", idJugadorAtacante,
+                        "al jugador", idJugadorAtacado,
+                        "nulo; Ataque de jugador ya eliminado"));
 
             } else if (agredido.getPs() <= 0) {
                 // agredido ya murio y no puede ser atacado
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque a jugador ya eliminado",
-                                idJugadorAtacante, idJugadorAtacado));
+                LOG.warning(String.format("%s %d %s %d %s",
+                        "Intento ataque jugador", idJugadorAtacante,
+                        "al jugador", idJugadorAtacado,
+                        "nulo; Ataque a jugador ya eliminado"));
 
             } else {
                 int oldPS = agredido.getPs();
@@ -148,19 +147,20 @@ public class JuegoServidor implements JuegoInterface {
                         * (1 - new Random().nextInt(2) * new Random().nextInt(2))
                         / 5;
                 agredido.setPs(agredido.getPs() - ataque);
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.INFO, String.format(
-                                "SERVER: Ataque exitoso del jugador %d al jugador %d de %d puntos: J%d PS = %d -%d = %d",
-                                idJugadorAtacante, idJugadorAtacado, ataque, idJugadorAtacado, oldPS, ataque, agredido.getPs()));
+
+                LOG.info(String.format("%s %d %s %d tuvo éxito(%d). J%d PS = %d -%d = %d",
+                        "Intento ataque del jugador", idJugadorAtacante,
+                        "al jugador", idJugadorAtacado,
+                        ataque, idJugadorAtacado, oldPS, ataque, agredido.getPs()));
 
                 ordenarRankin();
             }
 
         } else {
-            Logger.getLogger(JuegoServidor.class.getName()).log(
-                    Level.WARNING, String.format(
-                            "SERVER: Intento ataque del jugador %d nulo; Jugadores incompletos",
-                            idJugadorAtacante));
+            LOG.warning(String.format("Intento ataque del jugador %d nulo; %s",
+                    idJugadorAtacante,
+                    "Jugadores incompletos"));
+
         }
 
     }
@@ -170,27 +170,23 @@ public class JuegoServidor implements JuegoInterface {
             //
 
             rgsty = LocateRegistry.createRegistry(PORT);
-            JuegoServidor gameServer = new JuegoServidor();
+            JuegoServidor gameServer = new JuegoServidor(CANTJUGADORES);
             //
             rgsty.rebind("GameServer", UnicastRemoteObject.exportObject(gameServer, PORT));
-
-            Logger.getLogger(JuegoServidor.class.getName()).log(
-                    Level.INFO, String.format(
-                            "SERVER: Listening in port %d", PORT));
+            LOG.info(String.format("Start Server; Listening in port %d", PORT));
 
         } catch (RemoteException e) {
             if (e.getMessage().startsWith("Port already in use")) {
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.WARNING, String.format(
-                                "SERVER: %s - %s",
-                                "bind exeption",
-                                "Ese puerto está en uso. Posiblemente mal cerrado"));
+                LOG.warning(String.format(
+                        "SERVER: %s - %s",
+                        "bind exeption",
+                        "Ese puerto está en uso. Revisar arranques previos"));
+
             } else {
-                Logger.getLogger(JuegoServidor.class.getName()).log(
-                        Level.SEVERE, String.format(
-                                "SERVER ERROR: %s - %s",
-                                "RemoteException",
-                                e.getCause()));
+                LOG.severe(String.format(
+                        "ERROR: %s - %s",
+                        "RemoteException",
+                        e.getCause()));
             }
 
         }

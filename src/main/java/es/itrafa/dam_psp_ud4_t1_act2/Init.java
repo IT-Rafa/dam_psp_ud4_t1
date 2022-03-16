@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Init {
 
-   private static final Logger LOG = Logger.getLogger(Init.class.getName());
+    private static final Logger LOG = Logger.getLogger(Init.class.getName());
 
     /**
      * @param args the command line arguments
@@ -29,14 +29,15 @@ public class Init {
 
         try {
             LOG.info("Iniciando servidor para partida");
-            new JuegoServidor().run();
+            int cantJugadores = 5;
+            new JuegoServidor(cantJugadores).run();
             Thread.sleep(300);
             LOG.finest("Esperando jugadores");
 
-            for (int i = 0; i < JuegoServidor.CANTJUGADORES; i++) {
-                JuegoCliente cli = new JuegoCliente(i+1);
+            for (int i = 0; i < cantJugadores; i++) {
+                JuegoCliente cli = new JuegoCliente(i + 1);
                 jugCliList.add(cli);
-                
+
                 jugCliList.get(i).callAsignacion();
                 LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
                         i + 1,
@@ -46,33 +47,32 @@ public class Init {
 
             LOG.info("jugadores completados. Iniciamos lucha");
 
-
-            int turnos = 5;
+            int turnos = 10;
             for (int turno = 1; turno <= turnos; turno++) {
-                for (int indexCli = 0; indexCli < JuegoServidor.CANTJUGADORES; indexCli++) {
+                for (int indexCli = 0; indexCli < cantJugadores; indexCli++) {
 
                     JuegoCliente cli = jugCliList.get(indexCli);
                     JuegoInterface movPartida = cli.getPartida();
                     Jugador jugador = jugCliList.get(indexCli).getJugador();
-                    int idJugador = jugador.getId();
-
-                    cli.callRanking();
-                    cli.callConsultaPS();
+                    int idJugadorActual = jugador.getId();
+                    int idJugadorObjetivo;
                     
-                    movPartida.consultaPS(idJugador);
-
-                    int iDagredido;
-
-                    if (jugador.getId() != JuegoServidor.CANTJUGADORES) {
-                        iDagredido = jugador.getId() + 1;
-                    } else {
-                        iDagredido = 1;
+                    int[] rankingById = cli.callRanking();
+                    if(rankingById[0] != idJugadorActual){
+                        idJugadorObjetivo = rankingById[0];
+                    }else{
+                        idJugadorObjetivo = rankingById[1];
                     }
+                    cli.callConsultaPS();
+
+                    movPartida.consultaPS(idJugadorActual);
+
+
                     LOG.finest(String.format("jugador %d ataca a jugador %d",
-                            idJugador,
-                            iDagredido)
+                            idJugadorActual,
+                            idJugadorObjetivo)
                     );
-                    cli.callAtaque(iDagredido);
+                    cli.callAtaque(idJugadorObjetivo);
                 }
             }
 
@@ -82,14 +82,13 @@ public class Init {
             System.exit(0);
 
         } catch (RemoteException ex) {
-            Logger.getLogger(Init.class.getName()).log(
-                    Level.SEVERE, String.format(
-                            "MAIN: : Error comunicación con objeto remoto"));
+            LOG.severe(String.format(
+                    "Error comunicación con objeto remoto"));
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(Init.class.getName()).log(
-                    Level.SEVERE, String.format(
-                            "MAIN: Error con margen tiempo servidor"));
+            LOG.severe(String.format(
+                    "MAIN: Error con margen tiempo servidor"));
+
         }
 
     }
