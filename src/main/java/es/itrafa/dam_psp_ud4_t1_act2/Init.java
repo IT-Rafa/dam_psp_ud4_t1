@@ -39,10 +39,15 @@ public class Init {
                 jugCliList.add(cli);
 
                 jugCliList.get(i).callAsignacion();
-                LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
-                        i + 1,
-                        jugCliList.get(i).getJugador().getId())
-                );
+                if (jugCliList.get(i).getJugador() != null) {
+                    LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
+                            i + 1,
+                            jugCliList.get(i).getJugador().getId())
+                    );
+                } else {
+                    LOG.warning(String.format("Asignación no válida"));
+                }
+
             }
 
             LOG.info("jugadores completados. Iniciamos lucha");
@@ -52,27 +57,34 @@ public class Init {
                 for (int indexCli = 0; indexCli < cantJugadores; indexCli++) {
 
                     JuegoCliente cli = jugCliList.get(indexCli);
-                    JuegoInterface movPartida = cli.getPartida();
                     Jugador jugador = jugCliList.get(indexCli).getJugador();
-                    int idJugadorActual = jugador.getId();
-                    int idJugadorObjetivo;
-                    
-                    int[] rankingById = cli.callRanking();
-                    if(rankingById[0] != idJugadorActual){
-                        idJugadorObjetivo = rankingById[0];
-                    }else{
-                        idJugadorObjetivo = rankingById[1];
+                    if (jugador != null) {
+                        int idJugadorActual = jugador.getId();
+
+                        int idJugadorObjetivo;
+
+                        int[][] rankingById = cli.callRanking();
+
+                        if (rankingById[1][1] <= 0) {
+                            LOG.info("Fin programa por partida acabada");
+                            System.exit(0);
+                        }
+                        if (rankingById[0][0] != idJugadorActual) {
+                            idJugadorObjetivo = rankingById[0][0];
+                        } else {
+                            idJugadorObjetivo = rankingById[1][0];
+                        }
+                        cli.callConsultaPS();
+
+                        LOG.finest(String.format("jugador %d ataca a jugador %d",
+                                idJugadorActual,
+                                idJugadorObjetivo)
+                        );
+                        cli.callAtaque(idJugadorObjetivo);
+                    } else {
+                        LOG.warning("Cliente sin jugador asignado no puede hacer nada");
                     }
-                    cli.callConsultaPS();
 
-                    movPartida.consultaPS(idJugadorActual);
-
-
-                    LOG.finest(String.format("jugador %d ataca a jugador %d",
-                            idJugadorActual,
-                            idJugadorObjetivo)
-                    );
-                    cli.callAtaque(idJugadorObjetivo);
                 }
             }
 

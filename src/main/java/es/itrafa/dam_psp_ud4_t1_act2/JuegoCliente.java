@@ -66,7 +66,7 @@ public class JuegoCliente {
             // Entrando en partida
             jugador = partida.asignacionJugador();
             if (jugador != null) {
-                LOG.info(String.format("CLIENTE_%d: Recibida asignación a jugador", jugador.getId()));
+                LOG.info(String.format("CLIENTE_%d: Recibida asignación a Jugador %d", idCli, jugador.getId()));
 
             } else {
                 LOG.warning(String.format("CLIENTE_%d: Asignación rechazada. %s",
@@ -79,38 +79,66 @@ public class JuegoCliente {
 
     }
 
-    public int[] callRanking() throws RemoteException {
+    public int[][] callRanking() throws RemoteException {
+        // Pedimos lista jugadores ordenada por PS al objeto remoto
         List<Jugador> ranking = partida.consultaRanking();
-        LOG.info(String.format("CLIENTE_%d: Recibido Ranking; %s", idCli, ranking));
-        int [] rankingIdArray = new int[CANTJUGADORES];
-        int i=0;
-        for(Jugador j:ranking){
-            rankingIdArray[i] = j.getId();
+
+        // Formateamos lista para mostrarla
+        String rankingList = "";
+
+        if (ranking.get(1).getPs() > 0) { // Segundo sigue vivo ( partida en progreso)
+            for (Jugador j : ranking) {
+
+                if (j.getPs() > 0) {
+                    rankingList = rankingList.
+                            concat("\t" + j.getPosicion() + "º: jugador " + j.getId()).
+                            concat(" con " + j.getPs() + " de salud\n");
+                } else {
+
+                }
+
+            }
+        }else{ // PARTIDA ACABADA. Se pueden enviar peticiones, pero serán nulas
+            rankingList = "\tPartida finalizada: Ganador... ¡¡ Jugador " + ranking.get(0).getId() +  "!!";
+        }
+
+        // Mostramos ranking en consola
+        LOG.info(String.format("CLIENTE_%d: Recibido Ranking; \n%s", idCli, rankingList));
+
+        // Preparamos ranking con solo id para que que main decida a quien atacar
+        int[][] rankingIdArray = new int[CANTJUGADORES][2];
+        int i = 0;
+        for (Jugador j : ranking) {
+            rankingIdArray[i][0] = j.getId();
+            rankingIdArray[i][1] = j.getPs();
             i++;
         }
+
+        // devolvemos array de ids ordenados por puntos
         return rankingIdArray;
     }
 
     void callConsultaPS() throws RemoteException {
+        // actualizamos datos de nuestro jugador asignado
         setJugador(partida.consultaPS(jugador.getId()));
+        // mostramos los datos
         LOG.info(String.format(
-                        "CLIENTE_%d: Como jugador %d: Tiene %s PS y %d PC",
-                        idCli, jugador.getId(), jugador.getPs(), jugador.getPc()));
+                "CLIENTE_%d: Como jugador %d: Tiene %s PS y %d PC",
+                idCli, jugador.getId(), jugador.getPs(), jugador.getPc()));
     }
 
     void callAtaque(int jAtacado) throws RemoteException {
 
         if (jugador == null) {
             LOG.warning(String.format(
-                            "CLIENTE_nulo: No tiene jugador asignado. %s",
+                    "CLIENTE_nulo: No tiene jugador asignado. %s",
                     "Recuerda reiniciar servidor para reiniciar partida"));
 
         } else {
             LOG.info(String.format(
-                            "CLIENTE_%d: Intento de ataque, como jugador %d, al jugador %d;",
-                            idCli, jugador.getId(), jAtacado)
+                    "CLIENTE_%d: Intento de ataque, como jugador %d, al jugador %d;",
+                    idCli, jugador.getId(), jAtacado)
             );
-            
 
             partida.ataque(jugador.getId() * 10 + jAtacado);
         }

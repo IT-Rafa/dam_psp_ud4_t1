@@ -214,7 +214,6 @@ public class JuegoServidor implements JuegoInterface {
 
     private static void configLog() {
         try {
-            System.out.println("Ver logs completos en carpeta logs en proyecto");
             FileHandler handler = new FileHandler("logs\\serverLogs%g.txt", false);
             handler.setFormatter(new LogFormatter());
 
