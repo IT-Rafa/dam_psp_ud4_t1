@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Init {
 
-    static final Logger LOG = Logger.getLogger(Init.class.getName());
+   private static final Logger LOG = Logger.getLogger(Init.class.getName());
 
     /**
      * @param args the command line arguments
@@ -34,8 +34,9 @@ public class Init {
             LOG.finest("Esperando jugadores");
 
             for (int i = 0; i < JuegoServidor.CANTJUGADORES; i++) {
-                jugCliList.add(new JuegoCliente(i + 1));
-
+                JuegoCliente cli = new JuegoCliente(i+1);
+                jugCliList.add(cli);
+                
                 jugCliList.get(i).callAsignacion();
                 LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
                         i + 1,
@@ -45,7 +46,7 @@ public class Init {
 
             LOG.info("jugadores completados. Iniciamos lucha");
 
-            int cantAtaques = 3;
+            int cantAtaques = 10;
             for (int ataque = 0; ataque < cantAtaques; ataque++) {
                 for (int indexCli = 0; indexCli < JuegoServidor.CANTJUGADORES; indexCli++) {
 
@@ -95,7 +96,6 @@ public class Init {
 
     private static void configLog() {
         try {
-            System.out.println("Ver logs completos en carpeta logs en proyecto");
             FileHandler handler = new FileHandler("logs\\mainLogs%g.txt", false);
             handler.setFormatter(new LogFormatter());
 

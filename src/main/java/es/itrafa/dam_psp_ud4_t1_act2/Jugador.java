@@ -9,12 +9,13 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Jugador implements Serializable{
    private int id; // identificador del jugador
-   private String clienteAsignado; // alamacena IP jugador
+   private int idCli; // id del cliente
    private int ps; //puntos de salud
    private int pc; //puntos de combate
    private int posicion; //ranking
    private boolean asignado;
-
+   private String ip;
+   
     public int getPosicion() {
         return posicion;
     }
@@ -63,15 +64,23 @@ public class Jugador implements Serializable{
     /**
      * @return the clienteAsignado
      */
-    public String getClienteAsignado() {
-        return clienteAsignado;
+    public int getIdCli() {
+        return idCli;
     }
 
     /**
-     * @param clienteAsignado the clienteAsignado to set
+     * @param idCli the idCli to set
      */
-    public void setClienteAsignado(String clienteAsignado) {
-        this.clienteAsignado = clienteAsignado;
+    public void setIdCli(int idCli) {
+        this.idCli = idCli;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
    
    

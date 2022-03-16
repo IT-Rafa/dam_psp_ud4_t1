@@ -5,6 +5,7 @@
  */
 package es.itrafa.dam_psp_ud4_t1_act2;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +26,8 @@ import java.util.logging.Logger;
  */
 public class JuegoServidor implements JuegoInterface {
 
+    static final Logger LOG = Logger.getLogger(JuegoServidor.class.getName());
+
     private Registry rgsty;
     protected static final int PORT = 2000;
     protected static final int CANTJUGADORES = 5;
@@ -32,6 +36,7 @@ public class JuegoServidor implements JuegoInterface {
 
     // CONSTRUCTOR
     public JuegoServidor() {
+        configLog();
         listaJugadores = new ArrayList<>();
 
         for (int i = 1; i <= CANTJUGADORES; i++) {
@@ -56,24 +61,24 @@ public class JuegoServidor implements JuegoInterface {
         try {
             ipCli = RemoteServer.getClientHost();
         } catch (ServerNotActiveException ex) {
-            Logger.getLogger(JuegoServidor.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.severe(ex.getMessage());
+            
         }
 
         if (jugadorLibre < CANTJUGADORES) {
             j = listaJugadores.get(jugadorLibre);
             j.setAsignado(true);
-            j.setClienteAsignado(ipCli);
+            j.setIp(ipCli);
             jugadorLibre++;
 
-            Logger.getLogger(JuegoServidor.class.getName()).log(
-                    Level.INFO, String.format(
-                            "SERVER: Jugador %d ha sido asignado", j.getId()));
+            LOG.info(String.format("SERVER: Asignado el jugador %d al cliente con IP:%s",
+                    j.getId(), j.getIp()));
+            
         } else {
-
-            Logger.getLogger(JuegoServidor.class.getName()).log(
-                    Level.WARNING, String.format("%s: %s; %s",
-                            "SERVER", "Intento de asignación de jugador no válido",
+            LOG.warning(String.format("SERVER: %s; %s",
+                            "Intento de asignación de jugador no válido",
                             "Todos los jugadores de la partida fueron asignados"));
+
         }
 
         return j;
@@ -81,18 +86,18 @@ public class JuegoServidor implements JuegoInterface {
 
     @Override
     public List<Jugador> consultaRanking() throws RemoteException {
-        Logger.getLogger(JuegoServidor.class.getName()).log(
-                Level.INFO, String.format(
-                        "SERVER: Jugador Consulta Ranking "));
+        LOG.info(String.format(
+                        "SERVER: Cliente Consulta Ranking "));
+
         return Collections.unmodifiableList(listaJugadores);
     }
 
     @Override
     public Jugador consultaPS(int id) throws RemoteException {
         Jugador j = findJugadorById(id);
-        Logger.getLogger(JuegoServidor.class.getName()).log(
-                Level.INFO, String.format(
-                        "SERVER: Jugador %d Consulta sus PS ", j.getId()));
+        
+        LOG.info(String.format("SERVER: Cliente con jugador %d Consulta sus PS ",
+                j.getId()));
         return j;
     }
 
@@ -146,7 +151,7 @@ public class JuegoServidor implements JuegoInterface {
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
                                 "SERVER: Ataque exitoso del jugador %d al jugador %d  con %d puntos: J%d PS = %d -%d = %d",
-                                idJugadorAtacante, idJugadorAtacado, ataque,idJugadorAtacado, oldPS, ataque, agredido.getPs()));
+                                idJugadorAtacante, idJugadorAtacado, ataque, idJugadorAtacado, oldPS, ataque, agredido.getPs()));
 
                 ordenarRankin();
             }
@@ -210,5 +215,17 @@ public class JuegoServidor implements JuegoInterface {
 
         return null;
     }
+    private static void configLog() {
+        try {
+            System.out.println("Ver logs completos en carpeta logs en proyecto");
+            FileHandler handler = new FileHandler("logs\\serverLogs%g.txt", false);
+            handler.setFormatter(new LogFormatter());
 
+            LOG.addHandler(handler);
+            LOG.setLevel(Level.FINEST);
+
+        } catch (IOException | SecurityException ex) {
+            Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

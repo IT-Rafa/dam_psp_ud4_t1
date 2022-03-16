@@ -1,0 +1,414 @@
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: run:
+	INFO: SERVER: Listening in port 2000
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: asignacionJugador:
+	INFO: SERVER: Asignado el jugador 3 al cliente con IP:192.168.56.1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: asignacionJugador:
+	INFO: SERVER: Asignado el jugador 2 al cliente con IP:192.168.56.1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: asignacionJugador:
+	INFO: SERVER: Asignado el jugador 4 al cliente con IP:192.168.56.1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: asignacionJugador:
+	INFO: SERVER: Asignado el jugador 1 al cliente con IP:192.168.56.1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: asignacionJugador:
+	INFO: SERVER: Asignado el jugador 5 al cliente con IP:192.168.56.1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 3 al jugador 4  con 5 puntos: J4 PS = 55 -5 = 50
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 2 al jugador 3  con 10 puntos: J3 PS = 60 -10 = 50
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 51 -6 = 45
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 1 al jugador 2  con 18 puntos: J2 PS = 55 -18 = 37
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 5 al jugador 3  con 12 puntos: J3 PS = 50 -12 = 38
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 3 al jugador 4  con 5 puntos: J4 PS = 50 -5 = 45
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 2 al jugador 3  con 0 puntos: J3 PS = 38 -0 = 38
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 45 -6 = 39
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 1 al jugador 2  con 18 puntos: J2 PS = 37 -18 = 19
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 5 al jugador 3  con 12 puntos: J3 PS = 38 -12 = 26
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 3 al jugador 4  con 5 puntos: J4 PS = 45 -5 = 40
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 2 al jugador 3  con 0 puntos: J3 PS = 26 -0 = 26
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 39 -6 = 33
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 1 al jugador 2  con 18 puntos: J2 PS = 19 -18 = 1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 5 al jugador 3  con 12 puntos: J3 PS = 26 -12 = 14
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 3 al jugador 4  con 0 puntos: J4 PS = 40 -0 = 40
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 2 al jugador 3  con 10 puntos: J3 PS = 14 -10 = 4
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 33 -6 = 27
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 1 al jugador 2  con 0 puntos: J2 PS = 1 -0 = 1
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 5 al jugador 3  con 12 puntos: J3 PS = 4 -12 = -8
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agredido ya está muerto
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 27 -6 = 21
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 1 al jugador 2  con 18 puntos: J2 PS = 1 -18 = -17
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agredido ya está muerto
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agresor ya está muerto
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 21 -6 = 15
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 1 al jugador 2 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 15 -6 = 9
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 1 al jugador 2 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 9 -6 = 3
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 1 al jugador 2 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Ataque exitoso del jugador 4 al jugador 5  con 6 puntos: J5 PS = 3 -6 = -3
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 1 al jugador 2 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 3 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 3 al jugador 4 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 2 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 2 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 4 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 4 al jugador 5 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 1 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 1 al jugador 2 nulo; el agredido ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaPS:
+	INFO: SERVER: Cliente con jugador 5 Consulta sus PS 
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: ataque:
+	INFO: SERVER: Intento ataque jugador 5 al jugador 3 nulo; el agresor ya está muerto
+17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.JuegoServidor: consultaRanking:
+	INFO: SERVER: Cliente Consulta Ranking 
