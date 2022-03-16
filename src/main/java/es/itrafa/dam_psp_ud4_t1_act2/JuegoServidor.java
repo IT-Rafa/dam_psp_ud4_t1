@@ -120,21 +120,21 @@ public class JuegoServidor implements JuegoInterface {
                 // Pegarse a si mismo e estupido
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Por su propio bien",
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque a si mismo",
                                 idJugadorAtacante, idJugadorAtacado));
 
             } else if (agresor.getPs() <= 0) {
                 // agresor ya murio y no puede atacar
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; el agresor ya está muerto",
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque de jugador ya eliminado",
                                 idJugadorAtacante, idJugadorAtacado));
 
             } else if (agredido.getPs() <= 0) {
                 // agredido ya murio y no puede ser atacado
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
-                                "SERVER: Intento ataque jugador %d al jugador %d nulo; el agredido ya está muerto",
+                                "SERVER: Intento ataque jugador %d al jugador %d nulo; Ataque a jugador ya eliminado",
                                 idJugadorAtacante, idJugadorAtacado));
 
             } else {
@@ -145,7 +145,7 @@ public class JuegoServidor implements JuegoInterface {
                 agredido.setPs(agredido.getPs() - ataque);
                 Logger.getLogger(JuegoServidor.class.getName()).log(
                         Level.INFO, String.format(
-                                "SERVER: Ataque exitoso del jugador %d al jugador %d  con %d puntos: J%d PS = %d -%d = %d",
+                                "SERVER: Ataque exitoso del jugador %d al jugador %d de %d puntos: J%d PS = %d -%d = %d",
                                 idJugadorAtacante, idJugadorAtacado, ataque,idJugadorAtacado, oldPS, ataque, agredido.getPs()));
 
                 ordenarRankin();
@@ -154,7 +154,7 @@ public class JuegoServidor implements JuegoInterface {
         } else {
             Logger.getLogger(JuegoServidor.class.getName()).log(
                     Level.WARNING, String.format(
-                            "SERVER: Intento ataque jugador %d antes de completar jugadores",
+                            "SERVER: Intento ataque del jugador %d nulo; Jugadores incompletos",
                             idJugadorAtacante));
         }
 

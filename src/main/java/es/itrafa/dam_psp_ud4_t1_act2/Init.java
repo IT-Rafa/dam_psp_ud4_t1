@@ -45,8 +45,8 @@ public class Init {
 
             LOG.info("jugadores completados. Iniciamos lucha");
 
-            int cantAtaques = 3;
-            for (int ataque = 0; ataque < cantAtaques; ataque++) {
+            int turnos = 5;
+            for (int turno = 0; turno < turnos; turno++) {
                 for (int indexCli = 0; indexCli < JuegoServidor.CANTJUGADORES; indexCli++) {
 
                     JuegoCliente cli = jugCliList.get(indexCli);
@@ -64,7 +64,7 @@ public class Init {
                     if (jugador.getId() != JuegoServidor.CANTJUGADORES) {
                         iDagredido = jugador.getId() + 1;
                     } else {
-                        iDagredido = jugCliList.get(0).getJugador().getId();
+                        iDagredido = 1;
                     }
                     LOG.finest(String.format("jugador %d ataca a jugador %d",
                             idJugador,
@@ -75,7 +75,6 @@ public class Init {
             }
 
             Thread.sleep(300);
-            jugCliList.get(0).callRanking();
 
             LOG.info("Fin programa (a machete)");
             System.exit(0);
