@@ -84,13 +84,33 @@ public class JuegoCliente {
                         "CLIENTE_%d: Recibe Ranking; %s", idCli, ranking));
     }
 
-    void callAtaque(int jAtacado) throws RemoteException {
-
-        Logger.getLogger(JuegoCliente.class.getName()).log(
+    void callConsultaPS() throws RemoteException{
+        setJugador(partida.consultaPS(jugador.getId()));
+        Logger.getLogger(JuegoCliente.class
+                .getName()
+        ).log(
                 Level.INFO, String.format(
-                        "CLIENTE_%d: Intento de ataque, como jugador %d, al jugador %d;", idCli, jugador.getId(), jAtacado));
-        
-        partida.ataque(jugador.getId()*10 + jAtacado);
+                        "CLIENTE_%d: Como jugador %d: Tiene %s PS y %d PC",
+                        idCli, jugador.getId(), jugador.getPs(), jugador.getPc()));
+    }
+
+    void callAtaque(int jAtacado)  throws RemoteException{
+
+        if (jugador == null) {
+            Logger.getLogger(JuegoCliente.class.getName()).log(
+                    Level.WARNING, String.format(
+                            "CLIENTE_nulo: No tiene jugador asignado. Recuerda reiniciar servidor para reiniciar partida")
+            );
+
+        } else {
+            Logger.getLogger(JuegoCliente.class.getName()).log(
+                    Level.INFO, String.format(
+                            "CLIENTE_%d: Intento de ataque, como jugador %d, al jugador %d;", idCli, jugador.getId(), jAtacado)
+            );
+
+            partida.ataque(jugador.getId() * 10 + jAtacado);
+        }
+
     }
 
 }

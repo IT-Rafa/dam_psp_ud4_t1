@@ -93,7 +93,7 @@ public class JuegoServidor implements JuegoInterface {
         Logger.getLogger(JuegoServidor.class.getName()).log(
                 Level.INFO, String.format(
                         "SERVER: Jugador %d Consulta sus PS ", j.getId()));
-        return null;
+        return j;
     }
 
     @Override

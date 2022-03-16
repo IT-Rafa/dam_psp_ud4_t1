@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -20,55 +19,66 @@ public class Init {
 
     static final Logger LOG = Logger.getLogger(Init.class.getName());
 
-    public Init() {
-        try {
-            FileHandler handler  = new FileHandler("logs.txt");
-            handler.setFormatter(new SimpleFormatter());
-
-            LOG.addHandler(handler);
-
-            LOG.setLevel(Level.FINEST);
-
-            LOG.finest("Set Geeks=CODING");
-        } catch (IOException | SecurityException ex) {
-            Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        configLog();
+        LOG.finest("Preparando contenedor para controlar clientes");
         ArrayList<JuegoCliente> jugCliList = new ArrayList<>();
 
         try {
+            LOG.info("Iniciando servidor para partida");
             new JuegoServidor().run();
             Thread.sleep(300);
-            LOG.finest("MAIN: Esperando jugadores");
+            LOG.finest("Esperando jugadores");
 
             for (int i = 0; i < JuegoServidor.CANTJUGADORES; i++) {
                 jugCliList.add(new JuegoCliente(i + 1));
 
                 jugCliList.get(i).callAsignacion();
+                LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
+                        i + 1,
+                        jugCliList.get(i).getJugador().getId())
+                );
             }
-            System.out.println("MAIN: jugadores completados. Iniciamos lucha");
 
-            jugCliList.get(0).callRanking();
+            LOG.info("jugadores completados. Iniciamos lucha");
 
-            for (int i = 0; i < JuegoServidor.CANTJUGADORES; i++) {
-                JuegoCliente movimientoJugador = jugCliList.get(i);
+            int cantAtaques = 3;
+            for (int ataque = 0; ataque < cantAtaques; ataque++) {
+                for (int indexCli = 0; indexCli < JuegoServidor.CANTJUGADORES; indexCli++) {
 
-                if (i == JuegoServidor.CANTJUGADORES - 1) {
-                    movimientoJugador.callAtaque(1);
-                } else {
-                    movimientoJugador.callAtaque(i + 1);
+                    JuegoCliente cli = jugCliList.get(indexCli);
+                    JuegoInterface movPartida = cli.getPartida();
+                    Jugador jugador = jugCliList.get(indexCli).getJugador();
+                    int idJugador = jugador.getId();
+
+                    cli.callRanking();
+                    cli.callConsultaPS();
+                    
+                    movPartida.consultaPS(idJugador);
+
+                    int iDagredido;
+
+                    if (jugador.getId() != JuegoServidor.CANTJUGADORES) {
+                        iDagredido = jugador.getId() + 1;
+                    } else {
+                        iDagredido = jugCliList.get(0).getJugador().getId();
+                    }
+                    LOG.finest(String.format("jugador %d ataca a jugador %d",
+                            idJugador,
+                            iDagredido)
+                    );
+                    cli.callAtaque(iDagredido);
                 }
-
             }
 
             Thread.sleep(300);
             jugCliList.get(0).callRanking();
+
+            LOG.info("Fin programa (a machete)");
+            System.exit(0);
 
         } catch (RemoteException ex) {
             Logger.getLogger(Init.class.getName()).log(
@@ -80,6 +90,20 @@ public class Init {
                     Level.SEVERE, String.format(
                             "MAIN: Error con margen tiempo servidor"));
         }
+
     }
 
+    private static void configLog() {
+        try {
+            System.out.println("Ver logs completos en carpeta logs en proyecto");
+            FileHandler handler = new FileHandler("logs\\mainLogs%g.txt", false);
+            handler.setFormatter(new LogFormatter());
+
+            LOG.addHandler(handler);
+            LOG.setLevel(Level.FINEST);
+
+        } catch (IOException | SecurityException ex) {
+            Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
