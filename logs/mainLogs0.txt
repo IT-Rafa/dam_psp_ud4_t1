@@ -1,120 +1,70 @@
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: Preparando contenedor para controlar clientes
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	INFO: Iniciando servidor para partida
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: Esperando jugadores
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: Asignando al cliente 1, el jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: Asignando al cliente 1, el jugador 4
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: Asignando al cliente 2, el jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: Asignando al cliente 3, el jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: Asignando al cliente 3, el jugador 3
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: Asignando al cliente 4, el jugador 1
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: Asignando al cliente 5, el jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	INFO: jugadores completados. Iniciamos lucha
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 4 ataca a jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 1 ataca a jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 2 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 1 ataca a jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 1 ataca a jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 5 ataca a jugador 1
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 4 ataca a jugador 5
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 2 ataca a jugador 3
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 1 ataca a jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 5 ataca a jugador 1
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 4 ataca a jugador 5
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 2 ataca a jugador 3
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 1 ataca a jugador 2
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 5 ataca a jugador 1
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 4 ataca a jugador 5
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 2 ataca a jugador 3
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 3 ataca a jugador 4
-17:50:36: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 1 ataca a jugador 2
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 5 ataca a jugador 1
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 4 ataca a jugador 5
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 2 ataca a jugador 3
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 3 ataca a jugador 4
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	FINEST: jugador 1 ataca a jugador 2
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 3 ataca a jugador 4
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 1 ataca a jugador 2
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 3 ataca a jugador 4
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 1 ataca a jugador 2
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 3 ataca a jugador 4
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 2 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 4 ataca a jugador 5
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 1 ataca a jugador 2
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
-	FINEST: jugador 5 ataca a jugador 3
-17:50:37: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+17:57:39: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
+	FINEST: jugador 5 ataca a jugador 1
+17:57:40: 16/marzo/2022: es.itrafa.dam_psp_ud4_t1_act2.Init: main:
 	INFO: Fin programa (a machete)

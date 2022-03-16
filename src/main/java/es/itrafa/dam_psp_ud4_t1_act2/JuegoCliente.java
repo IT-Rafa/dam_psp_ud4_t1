@@ -83,9 +83,8 @@ public class JuegoCliente {
 
     public void callRanking() throws RemoteException {
         List<Jugador> ranking = partida.consultaRanking();
-        
-        
         LOG.info(String.format("CLIENTE_%d: Recibido Ranking; %s", idCli, ranking));
+
     }
 
     void callConsultaPS() throws RemoteException {
