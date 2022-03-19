@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package es.itrafa.dam_psp_ud4_t1_act2;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
+ * Clase para testear el inicio y control de los movimientos de cada jugador en la partida
  *
  * @author it-ra
  */
@@ -20,67 +15,101 @@ public class Init {
     private static final Logger LOG = Logger.getLogger(Init.class.getName());
 
     /**
+     * Inicia y controla y finaliza la partida al existir ganador
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        configLog();
         LOG.finest("Preparando contenedor para controlar clientes");
         ArrayList<JuegoCliente> jugCliList = new ArrayList<>();
 
         try {
-            LOG.info("Iniciando servidor para partida");
             int cantJugadores = 5;
             new JuegoServidor(cantJugadores).run();
-            Thread.sleep(300);
-            LOG.finest("Esperando jugadores");
+            LOG.finest(String.format("Iniciando servidor para partida de %d jugadores",
+                    cantJugadores));
 
+            
+            Thread.sleep(300);
+            LOG.finest("Esperando clientes para asignarles jugador");
+
+            // Por cada cliente
+            LOG.finest("Añadiendo clientes al contenedor");
             for (int i = 0; i < cantJugadores; i++) {
+
+                LOG.finest("Creamos cliente y le asignamos id");
                 JuegoCliente cli = new JuegoCliente(i + 1);
+
+                LOG.finest("Añadimos cliente a la lista");
                 jugCliList.add(cli);
 
+                LOG.finest("Petición a objeto remoto para que nos asigne jugador");
                 jugCliList.get(i).callAsignacion();
+
                 if (jugCliList.get(i).getJugador() != null) {
-                    LOG.finest(String.format("Asignando al cliente %d, el jugador %d",
-                            i + 1,
+                    LOG.finest(String.format("Asignado al cliente %d, el jugador %d",
+                            jugCliList.get(i).getIdCli(),
                             jugCliList.get(i).getJugador().getId())
                     );
                 } else {
-                    LOG.warning(String.format("Asignación no válida"));
+                    // solo debería llegar aqui si repetimos ejecución main o bucle mal formado
+                    LOG.warning(String.format("Asignación no válida. Probable partida completa."));
                 }
 
             }
+            LOG.info("jugadores completados. Iniciamos lucha\n");
 
-            LOG.info("jugadores completados. Iniciamos lucha");
-
+            // Después de hacer varias pruebas, con 10 turnos bastan para finalizar la partida
             int turnos = 10;
-            for (int turno = 1; turno <= turnos; turno++) {
-                for (int indexCli = 0; indexCli < cantJugadores; indexCli++) {
+            LOG.finest(String.format("Cada cliente hará sus movimientos (max. %d) hasta que halla ganador.", turnos));
 
+            // Por cada turno
+            for (int turno = 1; turno <= turnos; turno++) {
+                // Por cada cliente
+                for (int indexCli = 0; indexCli < cantJugadores; indexCli++) {
+                    // Capturamos cliente y sus datos para manejarlo
                     JuegoCliente cli = jugCliList.get(indexCli);
                     Jugador jugador = jugCliList.get(indexCli).getJugador();
+
                     if (jugador != null) {
                         int idJugadorActual = jugador.getId();
+                        LOG.info(String.format("Inicio Movimientos turno %d: Cliente %d(Jugador %d)\n",
+                                turno, cli.getIdCli(), idJugadorActual));
 
-                        int idJugadorObjetivo;
+                        LOG.finest(String.format("Cliente %d(Jugador %d): pide Ranking",
+                                cli.getIdCli(), idJugadorActual));
 
-                        int[][] rankingById = cli.callRanking();
+                        // El cliente nos devuelve un ranking simplificado con el id del jugador y su salud
+                        // Usaremos esto para saber a quien atacar y cuando finaliza la partida
+                        List<Jugador> newRanking = cli.callRanking();
 
-                        if (rankingById[1][1] <= 0) {
+                        // Si el 2º del Ranking se quedo sin PS la partida finalizo
+                        // y gano el 1º, si no prosigue
+                        if (newRanking.get(1).getPs() <= 0) {
                             LOG.info("Fin programa por partida acabada");
                             System.exit(0);
                         }
-                        if (rankingById[0][0] != idJugadorActual) {
-                            idJugadorObjetivo = rankingById[0][0];
-                        } else {
-                            idJugadorObjetivo = rankingById[1][0];
-                        }
+
+                        LOG.finest(String.format("Cliente %d(Jugador %d): pide sus puntos de salud y ataque",
+                                cli.getIdCli(), idJugadorActual));
                         cli.callConsultaPS();
 
-                        LOG.finest(String.format("jugador %d ataca a jugador %d",
-                                idJugadorActual,
-                                idJugadorObjetivo)
-                        );
+                        LOG.finest(String.format("Cliente %d(Jugador %d): elige enemigo",
+                                cli.getIdCli(), idJugadorActual));
+                        int idJugadorObjetivo;
+
+                        if (idJugadorActual != newRanking.get(0).getId()) {
+                            // Si no somos el primero, le atacamos
+                            idJugadorObjetivo = newRanking.get(0).getId();
+                        } else {
+                            //Si somos el primero, atacamos al segundo
+                            idJugadorObjetivo = newRanking.get(1).getId();
+                        }
+
+                        LOG.finest(String.format("Cliente %d(Jugador %d) ataca a jugador %d",
+                                cli.getIdCli(), idJugadorActual, idJugadorObjetivo));
                         cli.callAtaque(idJugadorObjetivo);
+
                     } else {
                         LOG.warning("Cliente sin jugador asignado no puede hacer nada");
                     }
@@ -90,7 +119,7 @@ public class Init {
 
             Thread.sleep(300);
 
-            LOG.info("Fin programa (a machete)");
+            LOG.warning("Turnos finalizados sin decidir ganador. Aumenta turnos");
             System.exit(0);
 
         } catch (RemoteException ex) {
@@ -105,16 +134,4 @@ public class Init {
 
     }
 
-    private static void configLog() {
-        try {
-            FileHandler handler = new FileHandler("logs\\mainLogs%g.txt", false);
-            handler.setFormatter(new LogFormatter());
-
-            LOG.addHandler(handler);
-            LOG.setLevel(Level.FINEST);
-
-        } catch (IOException | SecurityException ex) {
-            Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

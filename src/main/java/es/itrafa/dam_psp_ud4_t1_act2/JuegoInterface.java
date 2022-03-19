@@ -5,8 +5,10 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 /**
- *
- * @author jmor
+ * Define los métodos pertenecientes al objeto remoto (JuegoServidor) y que serán
+ * llamados por los clientes (objetos JuegoCliente)
+ * 
+ * @author it-ra
  */
 public interface JuegoInterface extends Remote {
     Jugador asignacionJugador()throws RemoteException;
